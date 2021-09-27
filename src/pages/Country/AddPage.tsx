@@ -9,7 +9,7 @@ const country: TCountry = {
   taxes: [{amount: 0, tax: 0}],
 }
 
-const AddPage: React.FC = () => {
+const AddPage: React.FC = (): JSX.Element => {
   const location = useHistory()
 
   const addHandler = (country: TCountry) => {

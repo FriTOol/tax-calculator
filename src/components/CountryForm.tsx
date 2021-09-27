@@ -4,7 +4,7 @@ import {Add as AddIcon, Delete as DeleteIcon} from '@material-ui/icons'
 import {TCountry, TCountryFormProps, TTax} from '../types'
 import {useHistory} from 'react-router'
 
-const CountryForm: React.FC<TCountryFormProps> = (props) => {
+const CountryForm: React.FC<TCountryFormProps> = (props): JSX.Element  => {
   const [country, setCountry] = useState<TCountry>(props.country)
   const location = useHistory()
 

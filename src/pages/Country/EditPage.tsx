@@ -11,7 +11,7 @@ const initialState: TCountryState = {
   countries: [],
 }
 
-const EditPage: React.FC = () => {
+const EditPage: React.FC = (): JSX.Element => {
   const [state, dispatch] = useReducer(countryReducer, initialState)
   const location = useHistory()
   const { id } = useParams<{id: string}>()

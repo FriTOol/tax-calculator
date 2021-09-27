@@ -9,9 +9,10 @@ import {
   Paper,
   Button, TableFooter
 } from '@material-ui/core'
-import {TCountryListProps} from '../types'
+import {TCountry, TCountryFormProps} from '../types'
 import calculate from '../calculator'
 import {Link} from 'react-router-dom'
+import React from 'react'
 
 const useStyles = makeStyles({
   table: {
@@ -22,7 +23,7 @@ const useStyles = makeStyles({
   }
 })
 
-function CountryList(prop: TCountryListProps): JSX.Element {
+const CountryList: React.FC<TCountryFormProps> = ({salaryAmount, countries, deleteHandler}): JSX.Element => {
   const classes = useStyles()
 
   return (
@@ -38,8 +39,8 @@ function CountryList(prop: TCountryListProps): JSX.Element {
           </TableRow>
         </TableHead>
         <TableBody>
-          {prop.countries.map((row) => {
-            const [pureSalary, taxAmount, taxPercent] = calculate(row, prop.salaryAmount)
+          {countries.map((row: TCountry) => {
+            const [pureSalary, taxAmount, taxPercent] = calculate(row, salaryAmount)
 
             return <TableRow key={row.id}>
               <TableCell component="th" scope="row">{row.name}</TableCell>
@@ -57,7 +58,7 @@ function CountryList(prop: TCountryListProps): JSX.Element {
                 <Button
                   variant="contained"
                   color="secondary"
-                  onClick={event => window.confirm('Are sure?') ? prop.deleteHandler(row) : ''}
+                  onClick={event => window.confirm('Are sure?') ? deleteHandler(row) : ''}
                 >Delete</Button>
               </TableCell>
             </TableRow>
@@ -66,7 +67,7 @@ function CountryList(prop: TCountryListProps): JSX.Element {
         <TableFooter>
           <TableRow>
             <TableCell>
-              Count: {prop.countries.length}
+              Count: {countries.length}
             </TableCell>
           </TableRow>
         </TableFooter>

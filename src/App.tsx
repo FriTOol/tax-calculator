@@ -4,7 +4,7 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import routeConfig from './routes'
 import './App.css'
 
-const App: React.FC = () => {
+const App: React.FC = (): JSX.Element => {
   return (
     <BrowserRouter basename={'tax'}>
       <CssBaseline />

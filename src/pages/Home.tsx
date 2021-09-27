@@ -18,7 +18,7 @@ const useStyles = makeStyles({
   }
 })
 
-const Home: React.FC = () => {
+const Home: React.FC = (): JSX.Element => {
   const [state, dispatch] = useReducer(countryReducer, initialState)
   const [salaryAmount, setSalaryAmount] = useState<number>(0)
   const classes = useStyles()
